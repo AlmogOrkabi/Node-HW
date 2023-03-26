@@ -44,4 +44,16 @@ async function ConcatFiles() {
 }
 
 
-module.exports = { Create, Read, GetRandNumber, ConcatFiles };
+async function OnReadEvent() {
+    let num = await GetRandNumber();
+    console.log(await (await Read(num)).toString());
+}
+
+async function OnEndProgram() {
+    for (let i = 1; i <= 5; i++) {
+        console.log(await (await Read(i)).toString(), '\n**********');
+    }
+}
+
+
+module.exports = { Create, Read, GetRandNumber, ConcatFiles, OnReadEvent, OnEndProgram };
